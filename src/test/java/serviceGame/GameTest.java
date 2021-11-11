@@ -1,16 +1,30 @@
-package org.example.service;
+package serviceGame;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
+    boolean isGreenLight = false;
+    @Test
+    public void winnersNames() {
+        String[] players = {"Kolya 7", "Dasha 9", "Ivan 3"};
+        String[] actual = Game.winnersNames(players);
+        if (!isGreenLight) {
+            String[] expected = {"Kolya", "Ivan"};
+            Assertions.assertArrayEquals(expected, actual);
+        } else {
+            String[] expected = {"Kolya", "Dasha", "Ivan"};
+            Assertions.assertArrayEquals(expected, actual);
+        }
+    }
+
     @Test
     public void shouldFindLose() {
 
         int[] arr = {5, 0, 9, 7, 0, 6};
         int actual = Game.firstMethod(arr);
         int expected;
-        if (!Game.isGreenLight) {
+        if (!isGreenLight) {
             expected = 1;
         } else {
             expected = 0;

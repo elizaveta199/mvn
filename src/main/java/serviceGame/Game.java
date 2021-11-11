@@ -1,10 +1,49 @@
-package org.example.service;
+package serviceGame;
+//import package tests.*;
 
 import java.util.Arrays;
 
 public class Game {
+
     static boolean isGreenLight = false;
     static int MAX_SPEED = 7;
+
+    public static String[] winnersNames(String[] players) {
+        int size = 0;
+        if (!isGreenLight) {
+            for (int i = 0, j = 1, k = 0; i < players.length; i++) {
+                String winners = players[i];
+                String[] parts = winners.split(" ");
+                int speed = Integer.parseInt(parts[j]);
+                if (speed <= MAX_SPEED) {
+                    size = size + 1;
+                    System.out.println(size);
+                }
+            }
+            String[] names = new String[size];
+            for (int i = 0, j = 1, k = 0; i < players.length; i++) {
+                String winners = players[i];
+                String[] parts = winners.split(" ");
+                int speed = Integer.parseInt(parts[j]);
+                if (speed <= MAX_SPEED) {
+                    names[k] = parts[j - 1];
+                    k = k + 1;
+                }
+            }
+            System.out.println(Arrays.toString(names));
+            return names;
+        } else {
+            size = players.length;
+            String[] names = new String[size];
+            for (int i = 0, j = 1, k = 0; i < players.length; i++) {
+                String winners = players[i];
+                String[] parts = winners.split(" ");
+                names[k] = parts[j - 1];
+                k = k + 1;
+            }
+            return names;
+        }
+    }
 
     public static int firstMethod(int[] game) {
         int x = 0;
