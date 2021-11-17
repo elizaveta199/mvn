@@ -1,14 +1,10 @@
 package serviceGame;
-//import package tests.*;
 
 import java.util.Arrays;
 
 public class Game {
 
-    static boolean isGreenLight = false;
-    static int MAX_SPEED = 7;
-
-    public static String[] winnersNames(String[] players) {
+    public static String[] winnersNames(String[] players, boolean isGreenLight, int MAX_SPEED) {
         int size = 0;
         if (!isGreenLight) {
             for (int i = 0, j = 1, k = 0; i < players.length; i++) {
@@ -45,7 +41,7 @@ public class Game {
         }
     }
 
-    public static int firstMethod(int[] game) {
+    public static int getCountOutOfTheGame(int[] game, boolean isGreenLight, int MAX_SPEED) {
         int x = 0;
         if (!isGreenLight) {
             for (int speed : game) {
@@ -59,7 +55,7 @@ public class Game {
         return x;
     }
 
-    public static int[] secondMethod(int[] game) {
+    public static int[] getSpeedOutOfTheGame(int[] game, boolean isGreenLight, int MAX_SPEED) {
         int x = 0;
         for (int i = 0; i < game.length; i++) {
             if (game[i] > MAX_SPEED) {
@@ -77,12 +73,12 @@ public class Game {
             }
             return speed;
         } else {
-            System.out.println("Выбывших нет");
+           // System.out.println("Выбывших нет");
         }
         return speed2;
     }
 
-    public static int[] thirdMethod(int[] game) {
+    public static int[] getSpeedSurvivors(int[] game, boolean isGreenLight, int MAX_SPEED) {
         int x = 0;
         for (int i = 0; i < game.length; i++) {
             if (game[i] <= MAX_SPEED) {
